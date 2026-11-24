@@ -1,113 +1,470 @@
-/* Layout and look of the expanded floating controller (dark glass card). */
+/* =========================================================
+   VOLUME MASTER - FLOATING CONTROLLER
+   Premium Glass UI + Morphing Circle Transition
+   Edge Handle → Glowing Circle → Expanded Panel
+========================================================= */
+
+/* ---- Animation stage / wrapper ---- */
+
+.vc-stage {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* ---- Collapsed floating edge handle ---- */
+
+.vc-handle {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 76px;
+  border-radius: 30px;
+  background: var(--gradient);
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px rgba(156, 107, 255, 0.35);
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+
+  transition:
+    width 0.28s cubic-bezier(.2,.8,.2,1),
+    height 0.28s cubic-bezier(.2,.8,.2,1),
+    border-radius 0.28s ease,
+    box-shadow 0.28s ease,
+    opacity 0.2s ease;
+}
+
+.vc-stage[data-edge="right"] .vc-handle {
+  right: 0;
+}
+
+.vc-stage[data-edge="left"] .vc-handle {
+  left: 0;
+}
+
+/* ---- Hover / touch glow ---- */
+
+.vc-handle:hover {
+  box-shadow:
+    0 0 14px rgba(156, 107, 255, 0.7),
+    0 0 28px rgba(255, 79, 163, 0.45);
+  filter: brightness(1.2);
+}
+
+.vc-handle:active {
+  filter: brightness(1.3);
+}
+
+/* ---- Step 1: Handle transforms into circle ---- */
+
+.vc-stage.is-morphing .vc-handle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 15px rgba(156, 107, 255, 0.8),
+    0 0 30px rgba(255, 79, 163, 0.5),
+    0 0 45px rgba(156, 107, 255, 0.25);
+
+  animation: vcCirclePulse 0.38s cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes vcCirclePulse {
+  0% {
+    transform: translateY(-50%) scale(0.65);
+  }
+
+  65% {
+    transform: translateY(-50%) scale(1.12);
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* ---- Expanded floating controller (glass card) ---- */
+
 .vc {
   position: absolute;
-  inset: 6px;                      /* room for the drop shadow inside the window */
+  inset: 6px;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 10px;
+
   border-radius: 24px;
   border: 1px solid var(--glass-border);
+
   background:
-    radial-gradient(80% 70% at 50% 0%, rgb(156 107 255), transparent 90%),
-    radial-gradient(80% 70% at 50% 100%, rgba(255, 79, 163, 1), transparent 90%),
+    radial-gradient(
+      80% 70% at 50% 0%,
+      rgb(156 107 255 / 85%),
+      transparent 90%
+    ),
+    radial-gradient(
+      80% 70% at 50% 100%,
+      rgba(255, 79, 163, 0.85),
+      transparent 90%
+    ),
     rgba(22, 17, 40, var(--bg-alpha));
+
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
+
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+
+  /* Initial collapsed state */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: scale(0.72);
+  clip-path: inset(45% 45% 45% 45% round 50%);
+
+  transform-origin: center center;
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.4s cubic-bezier(.16,1,.3,1),
+    clip-path 0.42s cubic-bezier(.16,1,.3,1),
+    visibility 0.42s;
 }
 
-/* ---- category tabs ---- */
-.vc-tabs { display: flex; gap: 6px; flex: 0 0 auto; }
+/* ---- Step 2: Circle expands into glass panel ---- */
+
+.vc-stage.is-open .vc {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: scale(1);
+  clip-path: inset(0 0 0 0 round 24px);
+
+  transition:
+    opacity 0.2s ease 0.05s,
+    transform 0.4s cubic-bezier(.16,1,.3,1),
+    clip-path 0.42s cubic-bezier(.16,1,.3,1),
+    visibility 0s;
+}
+
+/* Hide handle when panel is open */
+
+.vc-stage.is-open .vc-handle {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.5);
+}
+
+/* ---- Category tabs ---- */
+
+.vc-tabs {
+  display: flex;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
 .vc-tab {
   flex: 1;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
+
   padding: 6px 0 5px;
+
   border-radius: 14px;
   background: rgb(255 255 255 / 9%);
   border: 1px solid transparent;
+
   color: var(--text-dim);
   font-size: 10px;
-  transition: background 0.2s ease, color 0.2s ease;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.18s ease,
+    box-shadow 0.2s ease;
 }
-.vc-tab img { width: 18px; height: 18px; opacity: 0.7; }
+
+.vc-tab img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+}
+
 .vc-tab.active {
   background: var(--gradient);
   color: var(--text);
+
   box-shadow: 0 4px 14px rgba(255, 79, 163, 0.35);
 }
-.vc-tab.active img { opacity: 1; }
 
-/* ---- body: vertical slider + side controls ---- */
-.vc-body { flex: 1 1 auto; min-height: 0; display: flex; gap: 12px; }
+.vc-tab.active img {
+  opacity: 1;
+}
+
+.vc-tab:active {
+  transform: scale(0.94);
+}
+
+/* ---- Body: vertical slider + side controls ---- */
+
+.vc-body {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  display: flex;
+  gap: 12px;
+}
+
+/* ---- Vertical slider ---- */
 
 .vc-slider {
   flex: 0 0 64px;
+
   display: flex;
   justify-content: center;
-  touch-action: none;              /* the slider owns every touch: no scrolling, no panning */
+
+  touch-action: none;
 }
+
 .vc-track {
   position: relative;
+
   width: 100%;
   height: 100%;
+
   border-radius: 22px;
+
   background: rgb(255 255 255 / 2%);
   border: 1px solid var(--glass-border);
+
   overflow: hidden;
   touch-action: none;
 }
+
 .vc-fill {
   position: absolute;
-  left: 0; right: 0; bottom: 0;    /* grows upward: bottom = 0%, top = 100% */
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
   height: 0%;
-  background: linear-gradient(to top, var(--purple), var(--pink));
+
+  background: linear-gradient(
+    to top,
+    var(--purple),
+    var(--pink)
+  );
+
   transition: height 0.18s ease-out;
 }
+
 .vc-thumb {
   position: absolute;
+
   left: 50%;
   bottom: 0%;
+
   width: 34px;
   height: 6px;
+
   border-radius: 3px;
+
   background: #fff;
+
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+
   transform: translate(-50%, 50%);
+
   transition: bottom 0.18s ease-out;
+
   pointer-events: none;
 }
+
+/* Follow finger exactly while dragging */
+
 .vc.dragging .vc-fill,
-.vc.dragging .vc-thumb { transition: none; }   /* follow the finger exactly while dragging */
+.vc.dragging .vc-thumb {
+  transition: none;
+}
+
+/* ---- Side controls ---- */
 
 .vc-side {
   flex: 1;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
   min-width: 0;
 }
-.vc-percent { font-size: 34px; font-weight: 700; line-height: 1; letter-spacing: -1px; }
-.vc-percent small { font-size: 14px; font-weight: 500; color: var(--text-dim); margin-left: 1px; letter-spacing: 0; }
 
-.vc-btn-round { width: 52px; height: 52px; border-radius: 50%; padding: 14px; }
-.vc-btn-mute { width: 100%; height: 40px; border-radius: 16px; padding: 9px 0; }
-.vc-btn-mute img { width: 22px; height: 22px; margin: 0 auto; }
-.vc.is-muted .vc-btn-mute { background: var(--gradient); }
+.vc-percent {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+}
 
-/* ---- footer ---- */
-.vc-foot { flex: 0 0 auto; display: flex; justify-content: space-between; }
-.vc-btn-small { width: 38px; height: 30px; border-radius: 12px; padding: 6px; }
-.vc[data-edge="left"] .vc-collapse img { transform: scaleX(-1); }
+.vc-percent small {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dim);
 
-/* Short windows (landscape): tighten spacing instead of overflowing. */
+  margin-left: 1px;
+  letter-spacing: 0;
+}
+
+/* ---- Round buttons ---- */
+
+.vc-btn-round {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+  padding: 14px;
+
+  transition:
+    transform 0.18s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.vc-btn-round:active {
+  transform: scale(0.9);
+}
+
+/* ---- Mute button ---- */
+
+.vc-btn-mute {
+  width: 100%;
+  height: 40px;
+
+  border-radius: 16px;
+  padding: 9px 0;
+
+  transition:
+    transform 0.18s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.vc-btn-mute img {
+  width: 22px;
+  height: 22px;
+  margin: 0 auto;
+}
+
+.vc.is-muted .vc-btn-mute {
+  background: var(--gradient);
+  box-shadow: 0 0 15px rgba(255, 79, 163, 0.35);
+}
+
+/* ---- Footer ---- */
+
+.vc-foot {
+  flex: 0 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.vc-btn-small {
+  width: 38px;
+  height: 30px;
+
+  border-radius: 12px;
+  padding: 6px;
+
+  transition:
+    transform 0.18s ease,
+    background 0.2s ease;
+}
+
+.vc-btn-small:active {
+  transform: scale(0.9);
+}
+
+/* Flip collapse icon for left-side controller */
+
+.vc[data-edge="left"] .vc-collapse img {
+  transform: scaleX(-1);
+}
+
+/* ---- Panel opening content animation ---- */
+
+.vc-stage.is-open .vc-tabs,
+.vc-stage.is-open .vc-body,
+.vc-stage.is-open .vc-foot {
+  animation: vcContentReveal 0.35s ease both;
+}
+
+.vc-stage.is-open .vc-body {
+  animation-delay: 0.06s;
+}
+
+.vc-stage.is-open .vc-foot {
+  animation-delay: 0.1s;
+}
+
+@keyframes vcContentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Short windows (landscape) ---- */
+
 @media (max-height: 300px) {
-  .vc { gap: 5px; padding: 8px; }
-  .vc-percent { font-size: 26px; }
-  .vc-btn-round { width: 42px; height: 42px; padding: 11px; }
-  .vc-btn-mute { height: 32px; }
+  .vc {
+    gap: 5px;
+    padding: 8px;
+  }
+
+  .vc-percent {
+    font-size: 26px;
+  }
+
+  .vc-btn-round {
+    width: 42px;
+    height: 42px;
+    padding: 11px;
+  }
+
+  .vc-btn-mute {
+    height: 32px;
+  }
+}
+
+/* ---- Reduced motion accessibility ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .vc,
+  .vc-handle,
+  .vc-tab,
+  .vc-btn-round,
+  .vc-btn-mute,
+  .vc-btn-small,
+  .vc-stage.is-open .vc-tabs,
+  .vc-stage.is-open .vc-body,
+  .vc-stage.is-open .vc-foot {
+    animation: none !important;
+    transition: none !important;
+  }
 }
