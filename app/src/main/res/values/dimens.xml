@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="floating_panel_width">216dp</dimen>
+    <dimen name="floating_panel_height">330dp</dimen>
+    <dimen name="floating_handle_width">13dp</dimen>
+</resources>

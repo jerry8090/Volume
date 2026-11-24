@@ -1,0 +1,113 @@
+/* Layout and look of the expanded floating controller (dark glass card). */
+.vc {
+  position: absolute;
+  inset: 6px;                      /* room for the drop shadow inside the window */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  background:
+    radial-gradient(80% 70% at 50% 0%, rgb(156 107 255), transparent 90%),
+    radial-gradient(80% 70% at 50% 100%, rgba(255, 79, 163, 1), transparent 90%),
+    rgba(22, 17, 40, var(--bg-alpha));
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- category tabs ---- */
+.vc-tabs { display: flex; gap: 6px; flex: 0 0 auto; }
+.vc-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 0 5px;
+  border-radius: 14px;
+  background: rgb(255 255 255 / 9%);
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  font-size: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.vc-tab img { width: 18px; height: 18px; opacity: 0.7; }
+.vc-tab.active {
+  background: var(--gradient);
+  color: var(--text);
+  box-shadow: 0 4px 14px rgba(255, 79, 163, 0.35);
+}
+.vc-tab.active img { opacity: 1; }
+
+/* ---- body: vertical slider + side controls ---- */
+.vc-body { flex: 1 1 auto; min-height: 0; display: flex; gap: 12px; }
+
+.vc-slider {
+  flex: 0 0 64px;
+  display: flex;
+  justify-content: center;
+  touch-action: none;              /* the slider owns every touch: no scrolling, no panning */
+}
+.vc-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  background: rgb(255 255 255 / 2%);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  touch-action: none;
+}
+.vc-fill {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;    /* grows upward: bottom = 0%, top = 100% */
+  height: 0%;
+  background: linear-gradient(to top, var(--purple), var(--pink));
+  transition: height 0.18s ease-out;
+}
+.vc-thumb {
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  width: 34px;
+  height: 6px;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  transform: translate(-50%, 50%);
+  transition: bottom 0.18s ease-out;
+  pointer-events: none;
+}
+.vc.dragging .vc-fill,
+.vc.dragging .vc-thumb { transition: none; }   /* follow the finger exactly while dragging */
+
+.vc-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+}
+.vc-percent { font-size: 34px; font-weight: 700; line-height: 1; letter-spacing: -1px; }
+.vc-percent small { font-size: 14px; font-weight: 500; color: var(--text-dim); margin-left: 1px; letter-spacing: 0; }
+
+.vc-btn-round { width: 52px; height: 52px; border-radius: 50%; padding: 14px; }
+.vc-btn-mute { width: 100%; height: 40px; border-radius: 16px; padding: 9px 0; }
+.vc-btn-mute img { width: 22px; height: 22px; margin: 0 auto; }
+.vc.is-muted .vc-btn-mute { background: var(--gradient); }
+
+/* ---- footer ---- */
+.vc-foot { flex: 0 0 auto; display: flex; justify-content: space-between; }
+.vc-btn-small { width: 38px; height: 30px; border-radius: 12px; padding: 6px; }
+.vc[data-edge="left"] .vc-collapse img { transform: scaleX(-1); }
+
+/* Short windows (landscape): tighten spacing instead of overflowing. */
+@media (max-height: 300px) {
+  .vc { gap: 5px; padding: 8px; }
+  .vc-percent { font-size: 26px; }
+  .vc-btn-round { width: 42px; height: 42px; padding: 11px; }
+  .vc-btn-mute { height: 32px; }
+}

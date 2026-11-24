@@ -1,0 +1,10 @@
+<resources>
+    <color name="vm_bg">#120B1F</color>
+    <color name="vm_card">#1E1433</color>
+    <color name="vm_card_alt">#2E2150</color>
+    <color name="vm_text">#F3ECFF</color>
+    <color name="vm_text_secondary">#B7A8D6</color>
+    <color name="vm_primary">#B08CFF</color>
+    <color name="vm_accent">#FF4FA3</color>
+    <color name="vm_halo">#33B08CFF</color>
+</resources>

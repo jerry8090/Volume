@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">Volume Master</string>
+    <string name="tagline">On-screen volume control for your phone</string>
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="not_now">Not now</string>
+    <string name="continue_label">Continue</string>
+    <string name="open_settings">Open settings</string>
+    <string name="settings_unavailable">This settings screen is not available on your device.</string>
+
+    <string name="media">Media</string>
+    <string name="media_desc">Music, videos and games</string>
+    <string name="ringtone">Ringtone</string>
+    <string name="ringtone_desc">Incoming calls</string>
+    <string name="alarm">Alarm</string>
+    <string name="alarm_desc">Alarm sound</string>
+
+    <string name="volume_down">Volume down</string>
+    <string name="volume_up">Volume up</string>
+    <string name="mute_toggle">Mute or unmute</string>
+
+    <string name="controllers">Controllers</string>
+    <string name="floating_controller">Floating controller</string>
+    <string name="floating_off">Off</string>
+    <string name="floating_on">Active - tap the edge handle to expand, drag it to move</string>
+    <string name="floating_need_perm">Needs the “Display over other apps” permission</string>
+    <string name="grant_overlay">Grant overlay permission</string>
+    <string name="notification_controller">Notification controller</string>
+    <string name="notif_off">Off</string>
+    <string name="notif_on">Active - use the buttons in the notification shade</string>
+    <string name="notif_blocked">Notifications are blocked for this app</string>
+    <string name="allow_notifications">Allow notifications</string>
+    <string name="dnd_hint">Ringtone and alarm volume can be limited by Do Not Disturb. Allow Do Not Disturb access so Volume Master can change them reliably.</string>
+    <string name="grant_dnd">Allow Do Not Disturb access</string>
+
+    <string name="quick_controls">Quick controls</string>
+    <string name="quick_controls_desc">Presets, the floating buttons and the notification act on the selected category.</string>
+    <string name="presets">Presets</string>
+    <string name="preset_silent">Silent 0%</string>
+    <string name="preset_low">Low 25%</string>
+    <string name="preset_medium">Medium 50%</string>
+    <string name="preset_high">High 75%</string>
+    <string name="preset_max">Maximum 100%</string>
+
+    <string name="msg_restricted">Android kept %1$s volume at %2$d%% (requested %3$d%%).</string>
+    <string name="reason_fixed">This device uses fixed volume.</string>
+    <string name="reason_dnd_active">Do Not Disturb (Total silence or Alarms only) is blocking volume changes. Turn it off and try again.</string>
+    <string name="reason_dnd_access">Android needs Do Not Disturb access for this change. Allow it from the dashboard.</string>
+    <string name="reason_app_ops">A system permission setting prevents Volume Master from changing this volume.</string>
+    <string name="reason_unknown">No specific restriction was found. Details are in Logcat (tag VolumeManager).</string>
+    <string name="msg_unavailable">Audio control is not available on this device.</string>
+
+    <string name="perm_overlay_title">Display over other apps</string>
+    <string name="perm_overlay_msg">The floating edge handle is drawn on top of other apps, so Android requires you to allow “Display over other apps” for Volume Master. On the next screen, switch it on, then come back.</string>
+    <string name="perm_notif_title">Notification access</string>
+    <string name="perm_notif_msg">Volume Master keeps a small notification with volume buttons so you can change volume without opening the app. Android 13 and newer asks for your permission to show it.</string>
+    <string name="notif_denied">Notification permission denied. The notification controller stays hidden until you allow it.</string>
+
+    <string name="channel_name">Volume controller</string>
+    <string name="channel_desc">Ongoing controls for changing volume</string>
+    <string name="notif_title">%1$s volume · %2$d%%</string>
+    <string name="notif_summary">Media %1$d%% · Ringtone %2$d%% · Alarm %3$d%%</string>
+    <string name="notif_floating_title">Floating volume controller active</string>
+    <string name="notif_floating_text">Tap to open Volume Master</string>
+    <string name="action_up">Vol +</string>
+    <string name="action_down">Vol -</string>
+    <string name="action_mute">Mute</string>
+    <string name="action_unmute">Unmute</string>
+    <string name="action_switch">Switch</string>
+
+    <string name="settings_general">General</string>
+    <string name="enable_floating">Enable floating controller</string>
+    <string name="enable_notification">Enable notification controller</string>
+    <string name="auto_start">Start after reboot</string>
+    <string name="auto_start_desc">Restarts the enabled controllers when the phone boots, if permissions are still granted.</string>
+    <string name="settings_appearance">Edge handle</string>
+    <string name="button_size">Handle size</string>
+    <string name="button_opacity">Handle opacity</string>
+    <string name="size_value">%1$d dp</string>
+    <string name="opacity_value">%1$d%%</string>
+    <string name="default_category">Default volume category</string>
+    <string name="theme">Theme</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_system">System</string>
+    <string name="reset_settings">Reset settings</string>
+    <string name="reset_title">Reset settings?</string>
+    <string name="reset_msg">All Volume Master settings go back to their defaults and the edge handle returns to its default position.</string>
+    <string name="reset_confirm">Reset</string>
+
+    <string name="floating_bubble">Volume Master floating button</string>
+    <string name="hide_floating">Hide floating controller</string>
+    <string name="open_app">Open Volume Master</string>
+    <string name="screen_edge">Screen edge</string>
+    <string name="edge_left">Left</string>
+    <string name="edge_right">Right</string>
+    <string name="auto_collapse">Auto-collapse delay</string>
+    <string name="auto_collapse_value">%1$d s</string>
+    <string name="auto_collapse_never">Never</string>
+    <string name="start_expanded">Start expanded</string>
+    <string name="quick_mute">Mute</string>
+    <string name="quick_normal">Normal</string>
+    <string name="quick_max">Max</string>
+    <string name="quick_collapse">Collapse</string>
+    <string name="msg_webview_unavailable">Android System WebView is unavailable, so the volume panel cannot open. Install or enable it and retry.</string>
+</resources>

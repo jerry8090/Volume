@@ -1,0 +1,39 @@
+<resources>
+    <style name="Theme.VolumeMaster" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/vm_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/vm_accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/vm_card_alt</item>
+        <item name="colorOnSecondaryContainer">@color/vm_text</item>
+        <item name="colorSurface">@color/vm_card</item>
+        <item name="colorOnSurface">@color/vm_text</item>
+        <item name="colorOnSurfaceVariant">@color/vm_text_secondary</item>
+        <item name="android:windowBackground">@color/vm_bg</item>
+        <item name="android:statusBarColor">@color/vm_bg</item>
+        <item name="android:windowLightStatusBar">@bool/light_bars</item>
+        <item name="android:textColorPrimary">@color/vm_text</item>
+        <item name="android:textColorSecondary">@color/vm_text_secondary</item>
+    </style>
+
+    <!-- Used only to inflate the floating overlay (always dark, independent of app theme) -->
+    <style name="Theme.VolumeMaster.Overlay" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/overlay_primary</item>
+        <item name="colorSecondary">@color/overlay_accent</item>
+    </style>
+
+    <style name="Vm.Text.Title" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/vm_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Vm.Text.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/vm_text_secondary</item>
+    </style>
+
+    <style name="Vm.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/vm_card</item>
+        <item name="cardCornerRadius">24dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+</resources>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Volume Master</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/floating-controller.css">
+</head>
+<body>
+  <main class="vc" id="vc" data-edge="right">
+
+    <nav class="vc-tabs" role="tablist" aria-label="Volume category">
+      <button class="vc-tab" role="tab" data-category="media" aria-label="Media">
+        <img src="icons/media.svg" alt=""><span>Media</span>
+      </button>
+      <button class="vc-tab" role="tab" data-category="ring" aria-label="Ringtone">
+        <img src="icons/ringtone.svg" alt=""><span>Ringtone</span>
+      </button>
+      <button class="vc-tab" role="tab" data-category="alarm" aria-label="Alarm">
+        <img src="icons/alarm.svg" alt=""><span>Alarm</span>
+      </button>
+    </nav>
+
+    <section class="vc-body">
+      <div class="vc-slider" id="slider" role="slider" aria-orientation="vertical"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Volume">
+        <div class="vc-track" id="track">
+          <div class="vc-fill" id="fill"></div>
+          <div class="vc-thumb" id="thumb"></div>
+        </div>
+      </div>
+
+      <div class="vc-side">
+        <div class="vc-percent"><span id="percent">0</span><small>%</small></div>
+        <button class="vc-btn vc-btn-round" id="btn-plus" aria-label="Volume up"><img src="icons/plus.svg" alt=""></button>
+        <button class="vc-btn vc-btn-round" id="btn-minus" aria-label="Volume down"><img src="icons/minus.svg" alt=""></button>
+        <button class="vc-btn vc-btn-mute" id="btn-mute" aria-label="Mute"><img id="mute-icon" src="icons/volume.svg" alt=""></button>
+      </div>
+    </section>
+
+    <footer class="vc-foot">
+      <button class="vc-btn vc-btn-small" id="btn-close" aria-label="Hide controller"><img src="icons/close.svg" alt=""></button>
+      <button class="vc-btn vc-btn-small" id="btn-open" aria-label="Open Volume Master"><img src="icons/open.svg" alt=""></button>
+      <button class="vc-btn vc-btn-small vc-collapse" id="btn-collapse" aria-label="Collapse"><img src="icons/collapse.svg" alt=""></button>
+    </footer>
+  </main>
+
+  <script src="js/android-bridge.js"></script>
+  <script src="js/volume-controller.js"></script>
+</body>
+</html>

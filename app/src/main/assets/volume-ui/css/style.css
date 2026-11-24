@@ -1,0 +1,52 @@
+/* Base tokens, reset and shared button styles for the Volume Master overlay UI. */
+:root {
+  --purple: #9c6bff;
+  --pink: #ff4fa3;
+  --text: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --bg-alpha: 0.9;               /* changed from Android: Settings > handle opacity */
+  --gradient: linear-gradient(160deg, var(--purple), var(--pink));
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  color: var(--text);
+  font-family: -apple-system, "Roboto", "Segoe UI", sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+img { width: 100%; height: 100%; display: block; pointer-events: none; }
+
+button {
+  border: 0;
+  outline: 0;
+  color: inherit;
+  font: inherit;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.vc-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.12s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.vc-btn.pressed,
+.vc-btn:active {
+  transform: scale(0.93);
+  background: var(--gradient);
+  box-shadow: 0 0 14px rgba(255, 79, 163, 0.55);
+}

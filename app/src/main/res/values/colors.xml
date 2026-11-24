@@ -1,0 +1,19 @@
+<resources>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Light theme -->
+    <color name="vm_bg">#F6F1FF</color>
+    <color name="vm_card">#FFFFFF</color>
+    <color name="vm_card_alt">#ECE3FF</color>
+    <color name="vm_text">#1E1433</color>
+    <color name="vm_text_secondary">#5E4F7F</color>
+    <color name="vm_primary">#7B3FE4</color>
+    <color name="vm_accent">#D81B7A</color>
+    <color name="vm_halo">#337B3FE4</color>
+    <color name="ic_launcher_background">#2A1456</color>
+    <!-- Floating overlay (always dark) -->
+    <color name="overlay_panel">#F01E1433</color>
+    <color name="overlay_row_selected">#449C6BFF</color>
+    <color name="overlay_card_alt">#33FFFFFF</color>
+    <color name="overlay_primary">#B08CFF</color>
+    <color name="overlay_accent">#FF4FA3</color>
+</resources>

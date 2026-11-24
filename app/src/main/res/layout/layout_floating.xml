@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Edge-docked controller: native drag handle + a panel that hosts the HTML/CSS/JS WebView.
+     Child order is swapped in code per edge; the WebView itself is created in code. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.example.volumemaster.overlay.InteractionLinearLayout
+        android:id="@+id/panel"
+        android:layout_width="@dimen/floating_panel_width"
+        android:layout_height="@dimen/floating_panel_height"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:id="@+id/web_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.example.volumemaster.overlay.InteractionLinearLayout>
+
+    <FrameLayout
+        android:id="@+id/handle"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/bg_handle_right"
+        android:clickable="true"
+        android:contentDescription="@string/floating_bubble"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/handle_icon"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_volume_up" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/vm_bg"
+        app:navigationContentDescription="@string/back"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/vm_text"
+        app:title="@string/settings"
+        app:titleTextColor="@color/vm_text" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Vm.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_general"
+                        android:textAppearance="@style/Vm.Text.Title" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switch_floating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/enable_floating"
+                        android:textColor="@color/vm_text" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switch_notification"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/enable_notification"
+                        android:textColor="@color/vm_text" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switch_boot"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/auto_start"
+                        android:textColor="@color/vm_text" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/auto_start_desc"
+                        android:textAppearance="@style/Vm.Text.Body" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Vm.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_appearance"
+                        android:textAppearance="@style/Vm.Text.Title" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/button_size"
+                            android:textAppearance="@style/Vm.Text.Body" />
+
+                        <TextView
+                            android:id="@+id/txt_size"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/vm_accent" />
+                    </LinearLayout>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider_size"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stepSize="4.0"
+                        android:value="56.0"
+                        android:valueFrom="40.0"
+                        android:valueTo="96.0"
+                        app:haloColor="@color/vm_halo"
+                        app:thumbColor="@color/vm_accent"
+                        app:trackColorActive="@color/vm_primary"
+                        app:trackColorInactive="@color/vm_card_alt" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/button_opacity"
+                            android:textAppearance="@style/Vm.Text.Body" />
+
+                        <TextView
+                            android:id="@+id/txt_opacity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/vm_accent" />
+                    </LinearLayout>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider_opacity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stepSize="5.0"
+                        android:value="90.0"
+                        android:valueFrom="30.0"
+                        android:valueTo="100.0"
+                        app:haloColor="@color/vm_halo"
+                        app:thumbColor="@color/vm_accent"
+                        app:trackColorActive="@color/vm_primary"
+                        app:trackColorInactive="@color/vm_card_alt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/screen_edge"
+                        android:textAppearance="@style/Vm.Text.Body" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_group_edge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_edge_left"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/edge_left"
+                            android:textColor="@color/vm_text" />
+
+                        <RadioButton
+                            android:id="@+id/radio_edge_right"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/edge_right"
+                            android:textColor="@color/vm_text" />
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/auto_collapse"
+                            android:textAppearance="@style/Vm.Text.Body" />
+
+                        <TextView
+                            android:id="@+id/txt_auto_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/vm_accent" />
+                    </LinearLayout>
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider_auto_collapse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stepSize="1.0"
+                        android:value="4.0"
+                        android:valueFrom="0.0"
+                        android:valueTo="15.0"
+                        app:haloColor="@color/vm_halo"
+                        app:thumbColor="@color/vm_accent"
+                        app:trackColorActive="@color/vm_primary"
+                        app:trackColorInactive="@color/vm_card_alt" />
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switch_start_expanded"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/start_expanded"
+                        android:textColor="@color/vm_text" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Vm.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/default_category"
+                        android:textAppearance="@style/Vm.Text.Title" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_group_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
+
+                        <RadioButton
+                            android:id="@+id/radio_media"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/media"
+                            android:textColor="@color/vm_text" />
+
+                        <RadioButton
+                            android:id="@+id/radio_ring"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ringtone"
+                            android:textColor="@color/vm_text" />
+
+                        <RadioButton
+                            android:id="@+id/radio_alarm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/alarm"
+                            android:textColor="@color/vm_text" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/theme"
+                        android:textAppearance="@style/Vm.Text.Title" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_group_theme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
+
+                        <RadioButton
+                            android:id="@+id/radio_dark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/theme_dark"
+                            android:textColor="@color/vm_text" />
+
+                        <RadioButton
+                            android:id="@+id/radio_light"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/theme_light"
+                            android:textColor="@color/vm_text" />
+
+                        <RadioButton
+                            android:id="@+id/radio_system"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/theme_system"
+                            android:textColor="@color/vm_text" />
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_reset"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reset_settings" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
